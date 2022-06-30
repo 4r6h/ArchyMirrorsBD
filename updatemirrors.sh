@@ -1,2 +1,2 @@
 #!/bin/sh
-reflector -l 200 --protocol http,https --sort rate --save $HOME/mirrorlist
+reflector --verbose --leatest 200 --protocol http,https --sort rate --save $HOME/mirrorlist
