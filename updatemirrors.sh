@@ -11,9 +11,9 @@ sudo reflector --latest 200 --protocol http,https --sort rate --save $mirrorlist
 
 sudo sed -i '/xeonbd/d' $mirrorlist #Deletes the Bangladesh Mirror.
 
-sudo sed -i '1,/^Server/ {/^Server/i\
-Server = http://mirror.xeonbd.com/archlinux/$repo/os/$arch
-}' $mirrorlist
+sudo sed -i "1,/^Server/ {/^Server/i\
+$Bangladesh
+}" $mirrorlist
 
 #sudo sed -i "/^$/a $Bangladesh" $mirrorlist #Adds Bangladesh Mirror Again at the First Position.
 #######################################################################################################################################################
