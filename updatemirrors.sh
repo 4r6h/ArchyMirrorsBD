@@ -1,19 +1,19 @@
 #!/bin/env bash
 #######################################################################################################################################################
 
-Bangladesh='Server = http://mirror.xeonbd.com/archlinux/$repo/os/$arch' 			      #Defining Bangladesh Mirror.
+Bangladesh='Server = http://mirror.xeonbd.com/archlinux/$repo/os/$arch' 			        #Defining Bangladesh Mirror.
 
-mirrorlist='/etc/pacman.d/mirrorlist'								                                #Path to Pacman Mirrorlist.
+mirrorlist='/etc/pacman.d/mirrorlist'								                                  #Path to Pacman Mirrorlist.
 
 #mirrorlist='mirrorlist'
 
-sudo reflector --latest 200 --protocol http,https --sort rate --save $mirrorlist 		#Rates Mirrors For Best Speed.
+sudo reflector --latest 200 --protocol http,https --sort rate --save $mirrorlist 		  #Rates Mirrors For Best Speed.
 wait
 
-sudo sed -i '/xeonbd/d' $mirrorlist 									                              #Deletes the Bangladesh Mirror.
+sudo sed -i '/xeonbd/d' $mirrorlist 									                                #Deletes the Bangladesh Mirror.
 wait
 
-sed -i "/^$/a $Bangladesh" $mirrorlist								                              #Adds Bangladesh Mirror Again at the First Position.
+sed -i "/^$/a $Bangladesh" $mirrorlist								                                #Adds Bangladesh Mirror Again at the First Position.
 #######################################################################################################################################################
 
 #sudo reflector --latest 200 --protocol http,https --sort rate --save /etc/pacman.d/mirrorlist
