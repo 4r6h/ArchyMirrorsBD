@@ -11,7 +11,9 @@ sudo reflector --latest 200 --protocol http,https --sort rate --save $mirrorlist
 
 sudo sed -i '/xeonbd/d' $mirrorlist #Deletes the Bangladesh Mirror.
 
-sudo sed -i "1,/^Server/ {/^Server/i\ #Add Bangladesh mirror at the top in first position.
+#Add Bangladesh mirror at the top in first position.
+
+sudo sed -i "1,/^Server/ {/^Server/i\
 $Bangladesh
 }" $mirrorlist
 
