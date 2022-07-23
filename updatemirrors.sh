@@ -7,7 +7,7 @@ mirrorlist='/etc/pacman.d/mirrorlist' #Path to Pacman Mirrorlist.
 
 #mirrorlist='mirrorlist'
 
-sudo reflector --latest 200 --protocol http,https --sort rate --save $mirrorlist; #Rates Mirrors For Best Speed.
+sudo reflector --latest 200 --protocol http,https --sort rate --save $mirrorlist #Rates Mirrors For Best Speed.
 
 sudo sed -i '/xeonbd/d' $mirrorlist #Deletes the Bangladesh Mirror.
 
