@@ -8,19 +8,19 @@ mirrorlist='/etc/pacman.d/mirrorlist' #Path to Pacman Mirrorlist.
 
 #mirrorlist='mirrorlist'
 
-sudo reflector --latest 200 --protocol http,https --sort rate --save $mirrorlist #Rates Mirrors For Best Speed.
+reflector --latest 200 --protocol http,https --sort rate --save $mirrorlist #Rates Mirrors For Best Speed.
 
-sudo sed -i '/xeonbd/d' $mirrorlist #Deletes the Bangladesh Mirror.
+sed -i '/xeonbd/d' $mirrorlist #Deletes the Bangladesh Mirror.
 
 #Add Bangladesh mirror at the top in first position.
 
-sudo sed -i "1,/^Server/ {/^Server/i\
+sed -i "1,/^Server/ {/^Server/i\
 $Bangladesh
 }" $mirrorlist
 else
 echo "
 _________________________________________________________________________________________________
------------------------------------------PLEASE RUN AS ROOT--------------------------------------
+_______________________________________PLEASE RUN AS ROOT________________________________________
 _________________________________________________________________________________________________
 "
 
