@@ -1,29 +1,28 @@
 #!/bin/env bash
 #######################################################################################################################################################
 if [ $(whoami) = "root"  ];
-then
-Bangladesh='Server = http://mirror.xeonbd.com/archlinux/$repo/os/$arch' #Defining Bangladesh Mirror.
+    then
+          Bangladesh='Server = http://mirror.xeonbd.com/archlinux/$repo/os/$arch' #Defining Bangladesh Mirror.
 
-mirrorlist='/etc/pacman.d/mirrorlist' #Path to Pacman Mirrorlist.
+          mirrorlist='/etc/pacman.d/mirrorlist' #Path to Pacman Mirrorlist.
 
 #mirrorlist='mirrorlist'
 
-reflector --latest 200 --protocol http,https --sort rate --save $mirrorlist #Rates Mirrors For Best Speed.
+          reflector --latest 200 --protocol http,https --sort rate --save $mirrorlist #Rates Mirrors For Best Speed.
 
-sed -i '/xeonbd/d' $mirrorlist #Deletes the Bangladesh Mirror.
+          sed -i '/xeonbd/d' $mirrorlist #Deletes the Bangladesh Mirror.
 
 #Add Bangladesh mirror at the top in first position.
 
-sed -i "1,/^Server/ {/^Server/i\
-$Bangladesh
-}" $mirrorlist
+          sed -i "1,/^Server/ {/^Server/i\
+          $Bangladesh
+          }" $mirrorlist
 else
-echo "
-_________________________________________________________________________________________________
-_______________________________________PLEASE RUN AS ROOT________________________________________
-_________________________________________________________________________________________________
-"
-
+          echo "
+                  _________________________________________________________________________________________________
+                  _______________________________________PLEASE RUN AS ROOT________________________________________
+                  _________________________________________________________________________________________________
+                  "
 fi
 
 exit
