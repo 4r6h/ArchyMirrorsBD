@@ -8,4 +8,8 @@ By Uing this Script Bangladeshi users can make pacman fast for installing and up
 ```
 sudo pacman --needed --noconfirm -Sy wget reflector;wget https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh;sh updatemirrors.sh
 
+## or Shorten 
+
+sudo pacman --needed --noconfirm -Sy wget reflector;wget https://t.ly/Oz37;sh updatemirrors.sh
+
 ```
