@@ -1,9 +1,7 @@
 #!/bin/env bash
 #######################################################################################################################################################
-if (whoami != root)
-  then echo "Please run as root"
-
-  else
+if [ $(whoami) = "root"  ];
+then
 Bangladesh='Server = http://mirror.xeonbd.com/archlinux/$repo/os/$arch' #Defining Bangladesh Mirror.
 
 mirrorlist='/etc/pacman.d/mirrorlist' #Path to Pacman Mirrorlist.
@@ -19,7 +17,8 @@ sudo sed -i '/xeonbd/d' $mirrorlist #Deletes the Bangladesh Mirror.
 sudo sed -i "1,/^Server/ {/^Server/i\
 $Bangladesh
 }" $mirrorlist
-
+else
+echo "Please run as root"
 fi
 
 exit
