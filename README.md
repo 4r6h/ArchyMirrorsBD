@@ -12,6 +12,6 @@ sudo pacman --needed --noconfirm -Sy wget reflector;wget https://raw.githubuserc
 ## or Shorten 
 
 ```
-sudo pacman --needed --noconfirm -Sy wget reflector;wget https://t.ly/Oz37;sh updatemirrors.sh
+sudo pacman --needed --noconfirm -Sy wget reflector;wget shorturl.at/FNWX4;sh updatemirrors.sh
 
 ```
