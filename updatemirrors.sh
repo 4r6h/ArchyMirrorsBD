@@ -1,6 +1,6 @@
 #!/bin/env bash
 #######################################################################################################################################################
-if [ $(whoami) = "root"  ];
+if [ $(whoami) = "root" ];
     then
           Bangladesh='Server = http://mirror.xeonbd.com/archlinux/$repo/os/$arch' #Defining Bangladesh Mirror.
 
