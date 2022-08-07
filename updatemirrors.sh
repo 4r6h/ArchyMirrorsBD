@@ -1,16 +1,27 @@
 #!/usr/bin/env bash
 #######################################################################################################################################################
+
+#Defining who can run the script.
+
 if [ $(whoami) = "root" ];
+
     then
-          Bangladesh='Server = http://mirror.xeonbd.com/archlinux/$repo/os/$arch' #Defining Bangladesh Mirror.
 
-          mirrorlist='/etc/pacman.d/mirrorlist' #Path to Pacman Mirrorlist.
+#Defining Bangladesh Mirror.
 
-#mirrorlist='mirrorlist'
+          Bangladesh='Server = http://mirror.xeonbd.com/archlinux/$repo/os/$arch' 
 
-          reflector --latest 200 --protocol http,https --sort rate --save $mirrorlist #Rates Mirrors For Best Speed.
+#Path to Pacman Mirrorlist.
 
-          sed -i '/xeonbd/d' $mirrorlist #Deletes the Bangladesh Mirror.
+          mirrorlist='/etc/pacman.d/mirrorlist' $mirrorlist 
+
+#Rates Mirrors For Best Speed.
+
+          reflector --latest 200 --protocol http,https --sort rate --save
+
+#Deletes the Bangladesh Mirror.
+
+          sed -i '/xeonbd/d' $mirrorlist 
 
 #Add Bangladesh mirror at the top in first position.
 
@@ -18,6 +29,7 @@ if [ $(whoami) = "root" ];
           $Bangladesh
           }" $mirrorlist
 else
+
 echo "
 	__________________________________________
 	_____________PLEASE RUN AS ROOT___________
