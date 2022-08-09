@@ -1,29 +1,29 @@
 #!/usr/bin/env bash
 #######################################################################################################################################################
 
-#Defining who can run the script.
+# Defining who can run the script.
 
 if [ $(whoami) = "root" ];
 
     then
 
-#Defining Bangladesh Mirror.
+# Defining Bangladesh Mirror.
 
           Bangladesh='Server = http://mirror.xeonbd.com/archlinux/$repo/os/$arch' 
 
-#Path to Pacman Mirrorlist.
+# Path to Pacman Mirrorlist.
 
           mirrorlist='/etc/pacman.d/mirrorlist' $mirrorlist 
 
-#Rates Mirrors For Best Speed.
+# Rates Mirrors For Best Speed.
 
           reflector --latest 200 --protocol http,https --sort rate --save
 
-#Deletes the Bangladesh Mirror.
+# Deletes the Bangladesh Mirror.
 
           sed -i '/xeonbd/d' $mirrorlist 
 
-#Add Bangladesh mirror at the top in first position.
+# Add Bangladesh mirror at the top in first position.
 
           sed -i "1,/^Server/ {/^Server/i\
           $Bangladesh
