@@ -37,8 +37,6 @@ echo "
 "
 fi
 
-exit
-
 #######################################################################################################################################################
 
 #sudo sed -i "/^$/a $Bangladesh" $mirrorlist #Adds Bangladesh Mirror Again at the First Position.
