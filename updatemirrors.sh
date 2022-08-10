@@ -50,7 +50,7 @@ if [ $(whoami) = "root" ]; then
 	
 	sed -i "s/^ParallelDownloads.*/ParallelDownloads = $INPUT/" /etc/pacman.conf
 	pacman -Syy --noconfirm
-
+break
 					;;
 
 				*)	echo "You should give a whole number" ;;
