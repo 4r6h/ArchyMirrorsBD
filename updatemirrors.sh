@@ -3,9 +3,12 @@
 
 # Defining who can run the script.
 
-if [ $(whoami) = "root" ];
+if [ $(whoami) = "root" ]; then
+	
+	if [ ! -x /bin/reflactor ]; then
 
-    then
+		pacman -S --noconfirm --needed reflector
+else
 
 # Defining Bangladesh Mirror.
 
@@ -13,11 +16,11 @@ if [ $(whoami) = "root" ];
 
 # Path to Pacman Mirrorlist.
 
-          mirrorlist='/etc/pacman.d/mirrorlist' $mirrorlist 
+          mirrorlist='/etc/pacman.d/mirrorlist' 
 
 # Rates Mirrors For Best Speed.
 
-          reflector --latest 200 --protocol http,https --sort rate --save
+          reflector --latest 200 --protocol http,https --sort rate --save $mirrorlist 
 
 # Deletes the Bangladesh Mirror.
 
@@ -35,8 +38,8 @@ echo "
 	_____________PLEASE RUN AS ROOT___________
 	__________________________________________
 "
+	fi
 fi
-
 #######################################################################################################################################################
 
 #sudo sed -i "/^$/a $Bangladesh" $mirrorlist #Adds Bangladesh Mirror Again at the First Position.
