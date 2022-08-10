@@ -22,11 +22,7 @@ if [ $(whoami) = "root" ]; then
 					echo "Don't use more than 12 downloadings"
 				else
 			case $INPUT in
-				( +([[:digit:]]) )   echo "INPUT is all numbers" ;;
-				*)                   echo "You should give a whole number" ;;
-			esac
-				fi
-			done
+				( +([[:digit:]]) )
 
 # Defining Bangladesh Mirror.
 
@@ -54,7 +50,14 @@ if [ $(whoami) = "root" ]; then
 	
 	sed -i "s/^ParallelDownloads.*/ParallelDownloads = $INPUT/" /etc/pacman.conf
 	pacman -Syy --noconfirm
-	
+
+					;;
+
+				*)	echo "You should give a whole number" ;;
+			esac
+				fi
+			done
+
 	fi
 else
 
