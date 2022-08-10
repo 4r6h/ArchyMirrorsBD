@@ -11,54 +11,54 @@ if [ $(whoami) = "root" ]; then
 	if [ ! -x /bin/reflactor ]; then
 
 		pacman -S --noconfirm --needed reflector
+	fi
+	
+	while true 
+		do
+		echo 'How many parallel downloadings do you want?'
+		echo 'select between 6 or 12'
+		read -r -p "Insert a number :" INPUT
+	if [ $INPUT -gt "12" ]; then
+		echo "Don't use more than 12 downloadings"
 	else
-
-		while true
-			do
-			echo 'How many parallel downloadings do you want?'
-			echo 'select between 6 or 12'
-			read -r -p "Insert a number :" INPUT
-				if [ $INPUT -gt "12" ]; then
-					echo "Don't use more than 12 downloadings"
-				else
-			case $INPUT in
-				( +([[:digit:]]) )
+		case $INPUT in
+			( +([[:digit:]]) )
 
 # Defining Bangladesh Mirror.
 
-          Bangladesh='Server = http://mirror.xeonbd.com/archlinux/$repo/os/$arch' 
+	Bangladesh='Server = http://mirror.xeonbd.com/archlinux/$repo/os/$arch' 
 
 # Path to Pacman Mirrorlist.
 
-          mirrorlist='/etc/pacman.d/mirrorlist' 
+	mirrorlist='/etc/pacman.d/mirrorlist' 
 
 # Rates Mirrors For Best Speed.
 
-          reflector --latest 200 --protocol http,https --sort rate --save $mirrorlist 
+	reflector --latest 200 --protocol http,https --sort rate --save $mirrorlist 
 
 # Deletes the Bangladesh Mirror.
 
-          sed -i '/xeonbd/d' $mirrorlist 
+	sed -i '/xeonbd/d' $mirrorlist 
 
 # Add Bangladesh mirror at the top in first position.
 
-          sed -i "1,/^Server/ {/^Server/i\
-          $Bangladesh
-          }" $mirrorlist
+	sed -i "1,/^Server/ {/^Server/i\
+	$Bangladesh
+	}" $mirrorlist
 
 # Add parallel downloading
 	
 	sed -i "s/^ParallelDownloads.*/ParallelDownloads = $INPUT/" /etc/pacman.conf
 	pacman -Syy --noconfirm
 break
-					;;
+			;;
 
-				*)	echo "You should give a whole number" ;;
-			esac
-				fi
-			done
-
+			*)	
+				echo "You should give a whole number"
+			;;
+		esac
 	fi
+	done
 else
 
 echo "
