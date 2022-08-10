@@ -8,7 +8,7 @@ if [ $(whoami) = "root" ]; then
 	if [ ! -x /bin/reflactor ]; then
 
 		pacman -S --noconfirm --needed reflector
-else
+	else
 
 # Defining Bangladesh Mirror.
 
@@ -36,14 +36,15 @@ else
 	
 	sed -i 's/^ParallelDownloads.*/ParallelDownloads = 10/' /etc/pacman.conf
 	pacman -Syy --noconfirm
+	
+	fi
 else
 
 echo "
 	__________________________________________
 	_____________PLEASE RUN AS ROOT___________
 	__________________________________________
-"
-	fi
+     "
 fi
 #######################################################################################################################################################
 
