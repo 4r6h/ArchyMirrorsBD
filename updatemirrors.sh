@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+
+shopt -s extglob
+
 #######################################################################################################################################################
 
 # Defining who can run the script.
@@ -9,6 +12,21 @@ if [ $(whoami) = "root" ]; then
 
 		pacman -S --noconfirm --needed reflector
 	else
+
+		while true
+			do
+			echo 'How many parallel downloadings do you want?'
+			echo 'select between 6 or 12'
+			read -r -p "Insert a number :" INPUT
+				if [ $INPUT -gt "12" ]; then
+					echo "Don't use more than 12 downloadings"
+				else
+			case $INPUT in
+				( +([[:digit:]]) )   echo "INPUT is all numbers" ;;
+				*)                   echo "You should give a whole number" ;;
+			esac
+				fi
+			done
 
 # Defining Bangladesh Mirror.
 
@@ -34,7 +52,7 @@ if [ $(whoami) = "root" ]; then
 
 # Add parallel downloading
 	
-	sed -i 's/^ParallelDownloads.*/ParallelDownloads = 10/' /etc/pacman.conf
+	sed -i "s/^ParallelDownloads.*/ParallelDownloads = $INPUT/" /etc/pacman.conf
 	pacman -Syy --noconfirm
 	
 	fi
