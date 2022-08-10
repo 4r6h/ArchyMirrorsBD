@@ -31,6 +31,11 @@ else
           sed -i "1,/^Server/ {/^Server/i\
           $Bangladesh
           }" $mirrorlist
+
+# Add parallel downloading
+	
+	sed -i 's/^ParallelDownloads.*/ParallelDownloads = 10/' /etc/pacman.conf
+	pacman -Syy --noconfirm
 else
 
 echo "
