@@ -20,6 +20,10 @@ if [ $(whoami) = "root" ]; then
 		read -r -p "Insert a number :" INPUT
 	if [ $INPUT -gt "12" ]; then
 		echo "Don't use more than 12 downloadings"
+	elif [ $INPUT -eq "0" ]; then
+		echo "Don't use 0 downloadings"
+	elif [ $INPUT -lt "5" ]; then
+		echo "Don't use less than 5 downloadings"
 	else
 		case $INPUT in
 			( +([[:digit:]]) )
