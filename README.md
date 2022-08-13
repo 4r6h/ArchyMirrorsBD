@@ -8,6 +8,6 @@ By Uing this Script Bangladeshi users can make pacman fast for installing and up
 ## Boot Arch ISO or After Installing From TTY or Terminal run the following commands:
 
 ```
-sudo pacman --needed --noconfirm -Sy wget reflector;wget https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh;./updatemirrors.sh
+sudo pacman --needed --noconfirm -Sy wget reflector;wget https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh;chmod +x updatemirrors.sh;sudo ./updatemirrors.sh
 
 ```
