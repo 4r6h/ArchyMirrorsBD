@@ -46,13 +46,13 @@ if [ $(whoami) = "root" ]; then
 
 # Add Bangladesh mirror at the top in first position.
 
-	sed -i "1,/^Server/ {/^Server/i\
+	sed -i.4r6h "1,/^Server/ {/^Server/i\
 	$Bangladesh
 	}" $mirrorlist
 
 # Add parallel downloading
 	
-	sed -i "s/^ParallelDownloads.*/ParallelDownloads = $INPUT/" /etc/pacman.conf
+	sed -i.4r6h "s/^ParallelDownloads.*/ParallelDownloads = $INPUT/" /etc/pacman.conf
 	pacman -Syy --noconfirm
 break
 			;;
