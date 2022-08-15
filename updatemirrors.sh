@@ -12,7 +12,7 @@ shopt -s extglob
 	mirrorlist='/etc/pacman.d/mirrorlist' 
 
 
-updatemirrors () {
+updatemirrors() {
 
 # Rates Mirrors For Best Speed.
 
@@ -30,7 +30,7 @@ updatemirrors () {
 }
 
 
-on_parallel () {
+on_parallel() {
 
 # Add parallel downloading
 
