@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
-shopt -s extglob
+# ***************************************
+# * Author: 4r6h/Rahat		        *
+# * github: https://www.github.com/4r6h *
+# ***************************************
 
+shopt -s extglob
 
 # Defining Bangladesh Mirror.
 
