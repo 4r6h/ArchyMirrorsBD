@@ -75,6 +75,7 @@ done
 
 }
 
+main() {
 
 # Defining who can run the script.
 
@@ -115,40 +116,6 @@ else
 			\n"
 fi
 
+}
 
-
-
-
-
-#######################################################################################################################################################
-
-
-#   				[DONT UNCOMMENT OR TOUCH THESE LINES OF CODE THESE ARE JUST FOR REFRENCE.]
-#   				[DONT UNCOMMENT OR TOUCH THESE LINES OF CODE THESE ARE JUST FOR REFRENCE.]
-#   				[DONT UNCOMMENT OR TOUCH THESE LINES OF CODE THESE ARE JUST FOR REFRENCE.]
-
-
-#sudo sed -i "/^$/a $Bangladesh" $mirrorlist #Adds Bangladesh Mirror Again at the First Position.
-#sudo reflector --latest 200 --protocol http,https --sort rate --save /etc/pacman.d/mirrorlist
-#wait
-#sudo sed -i '/xeonbd/d' /etc/pacman.d/mirrorlist #Deletes the Bangladesh Mirror
-#wait
-#sudo sed -i '/^$/a Server = http://mirror.xeonbd.com/archlinux/$repo/os/$arch' /etc/pacman.d/mirrorlist #Adds Bangladesh Mirror after blank line
-
-#reflector --latest 200 --protocol http,https --sort rate --save $HOME/mirrorlist
-
-#sudo sed -i 's|^$|Server = http://mirror.xeonbd.com/archlinux/$repo/os/$arch|' /etc/pacman.d/mirrorlist #Adds Bangladesh Mirror
-
-#sed -i 's#{{find}}#{{replace}}#g' {{filename}}
-
-#sudo sed -i 's/^#Server/Server/g' /etc/pacman.d/mirrorlist
-
-#sudo sed -i '1 i Server = http://mirror.xeonbd.com/archlinux/$repo/os/$arch' /etc/pacman.d/mirrorlist #Previous Command
-
-#   				[DONT UNCOMMENT OR TOUCH THESE LINES OF CODE THESE ARE JUST FOR REFRENCE.]
-#   				[DONT UNCOMMENT OR TOUCH THESE LINES OF CODE THESE ARE JUST FOR REFRENCE.]
-#   				[DONT UNCOMMENT OR TOUCH THESE LINES OF CODE THESE ARE JUST FOR REFRENCE.]
-
-
-
-#######################################################################################################################################################
+main
