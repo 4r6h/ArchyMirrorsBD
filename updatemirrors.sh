@@ -46,27 +46,21 @@ do
 		
 				case "$INPUT" in
 					
+					$ENTER)	
+						sed -i.4r6h "s/^ParallelDownloads.*/ParallelDownloads = 5/" /etc/pacman.conf
+											
+											break ;;
 					[0-4])
 						echo -e "\n Don't use less than 5 downloadings! \n" ;;
-					
-					
-					1[3-*])
-						echo -e "\n Don't use more than 12 downloadings! \n" ;;
-	
 					
 					[5-9]|1[0-2])
 
 						sed -i.4r6h "s/^ParallelDownloads.*/ParallelDownloads = $INPUT/" /etc/pacman.conf
 
 											break ;;
-					$ENTER)
-					
-						sed -i.4r6h "s/^ParallelDownloads.*/ParallelDownloads = 5/" /etc/pacman.conf
-											
-											break ;;
 					( +([[:digit:]]) )
 
-						echo -e "\n invalid $INPUT is not acceptable! \n" ;;
+						echo -e "\n Don't use more than 12 downloadings! \n" ;;
 
 					*) 
 						echo -e "\n Error! You should give a whole number!\n" ;;
