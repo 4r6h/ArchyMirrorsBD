@@ -44,15 +44,15 @@ updatemirrors() {
 
 # Rates Mirrors For Best Speed.
 
-	reflector --latest 200 --protocol http,https --sort rate --save $mirrorlist 
+	sudo reflector --latest 200 --protocol http,https --sort rate --save $mirrorlist 
 
 # Deletes the Bangladesh Mirror.
 
-	sed -i '/xeonbd/d' $mirrorlist 
+	sudo sed -i '/xeonbd/d' $mirrorlist 
 
 # Add Bangladesh mirror at the top in first position.
 
-	sed -i.4r6h "1,/^Server/ {/^Server/i\
+	sudo sed -i.4r6h "1,/^Server/ {/^Server/i\
 	$Bangladesh
 	}" $mirrorlist
 }
@@ -64,14 +64,14 @@ on_parallel() {
 
 while true 
 do
-	echo -e "${BGreen}\n How many parallel downloadings do you want?\n select between 6 to 12 or press enter for default\n"
+	echo -e "${BGreen}\n How many parallel downloadings do you want?\n select between 5 to 12 or press enter for default.\n"
 
 		read -r -p " Insert a number: [0m" INPUT
 		
 				case "$INPUT" in
 					
 					$ENTER)	
-						sed -i.4r6h "s/^ParallelDownloads.*/ParallelDownloads = 5/" /etc/pacman.conf
+						sudo sed -i.4r6h "s/^ParallelDownloads.*/ParallelDownloads = 5/" /etc/pacman.conf
 
 					echo -e "${BGreen}\n Upgrading Mirrors also enabled 5 parallel downloadings.\n"	
 											
@@ -81,7 +81,7 @@ do
 					
 					[5-9]|1[0-2])
 
-						sed -i.4r6h "s/^ParallelDownloads.*/ParallelDownloads = $INPUT/" /etc/pacman.conf
+						sudo sed -i.4r6h "s/^ParallelDownloads.*/ParallelDownloads = $INPUT/" /etc/pacman.conf
 
 					echo -e "${BGreen}\n Upgrading Mirrors also enabled $INPUT parallel downloadings.\n"	
 
@@ -101,11 +101,18 @@ main() {
 
 # Defining who can run the script.
 
-if [ $(whoami) = "root" ]; then
-	
-		if [ ! -x /bin/reflactor ]; then
 
-			pacman -S --noconfirm --needed reflector
+if [[ -z $(which pacman) ]]; then
+			
+			echo -e "${BRed}\nThis script only works for ${BCyan}Arch Linux ${BRed}based systems.\n"
+			exit 0;
+else
+
+		if [[ -z $(which reflector) ]]; then
+			
+			echo -e "${BRed}\nReflactor not installed in your system.\n"
+			echo -e "${BGreen}Installing reflactor in your system.\n"
+			sudo pacman -S --noconfirm --needed reflector
 		fi
 	
 	while true 
@@ -113,7 +120,7 @@ if [ $(whoami) = "root" ]; then
 
 		echo -e "${BGreen}\n Do you want to add parallel downloadings?\n"
 	
-		read -r -p " Type [Y/n] then press enter. default is (Y): [0m" para
+		read -r -p " Choose an option to continue: [Y/n] [0m" para
 		
 			case "$para" in
 				[Yy]|[Yy][Ee][Ss]|$ENTER)
@@ -134,11 +141,6 @@ if [ $(whoami) = "root" ]; then
 			esac
 	done
 else
-	echo -e	"${BRed}\n
-		!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		------------PLEASE RUN AS ROOT------------
-		!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		\n ${Off}"
 fi
 
 }
