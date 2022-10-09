@@ -140,7 +140,6 @@ else
 					echo -e "${BRed}\n $para is invalid input....\n${Off}"
 			esac
 	done
-else
 fi
 
 }
