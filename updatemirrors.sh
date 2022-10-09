@@ -64,7 +64,7 @@ on_parallel() {
 
 while true 
 do
-	echo -e "${BGreen}\n How many parallel downloadings do you want?\n select between 5 to 12 or press enter for default.\n"
+	echo -e "${BGreen}\n How many parallel downloadings do you want?\n select between 5 to 12 or press enter for default.\n${Off}"
 
 		read -r -p " Insert a number: [0m" INPUT
 		
@@ -73,7 +73,7 @@ do
 					$ENTER)	
 						sudo sed -i.4r6h "s/^ParallelDownloads.*/ParallelDownloads = 5/" /etc/pacman.conf
 
-					echo -e "${BGreen}\n Upgrading Mirrors also enabled 5 parallel downloadings.\n"	
+					echo -e "${BGreen}\n Upgrading Mirrors also enabled 5 parallel downloadings.\n${Off}"	
 											
 											break ;;
 					[0-4])
@@ -83,7 +83,7 @@ do
 
 						sudo sed -i.4r6h "s/^ParallelDownloads.*/ParallelDownloads = $INPUT/" /etc/pacman.conf
 
-					echo -e "${BGreen}\n Upgrading Mirrors also enabled $INPUT parallel downloadings.\n"	
+					echo -e "${BGreen}\n Upgrading Mirrors also enabled $INPUT parallel downloadings.\n${Off}"	
 
 											break ;;
 					( +([[:digit:]]) )
@@ -104,7 +104,7 @@ main() {
 
 if [[ -z $(which pacman) ]]; then
 			
-			echo -e "${BRed}\nThis script only works for ${BCyan}Arch Linux ${BRed}based systems.\n"
+			echo -e "${BRed}\nThis script only works for ${BCyan}Arch Linux ${BRed}based systems.\n${Off}"
 			exit 0;
 else
 
@@ -132,7 +132,7 @@ else
 
 				[Nn]|[Nn][Oo])
 				
-					echo -e "${BGreen}\n Upgrading Mirrors without parallel downloadings.\n"	
+					echo -e "${BGreen}\n Upgrading Mirrors without parallel downloadings.\n${Off}"	
 				
 					updatemirrors 
 							break ;;
